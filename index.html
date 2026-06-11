@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reproductor con Descripción</title>
+
+ <!-- Bootstrap 5 CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .contenedor {
+            display: flex;
+            /*height: 100vh;*/
+            height: 600px;
+        }
+
+        .video-section {
+            width: 75%;
+            padding: 15px;
+            box-sizing: border-box;
+             background-color: hwb(167 5% 69%); /* Reemplaza con tu color favorito */
+             border-radius: 20px;
+        }
+
+        .descripcion-section {
+            width: 25%;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-left: 3px solid #ccc;
+            box-sizing: border-box;
+            overflow-y: auto; 
+        }
+
+        .descripcion-section h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .descripcion-section p {
+            font-size: 20px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        video {
+            width: 100%;
+            max-height: 70%;
+            border-radius: 8px;
+        }
+
+        .lista {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .lista button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #0078D4;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .lista button:hover {
+            background-color: #005a9e;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-5"> 
+    <h1 class="ms-4"> Construyendo Equipos de Alto rendimiento</h1>
+ <div class="contenedor">
+    <!-- Sección Video -->
+    <div class="video-section">
+        <video id="videoPlayer" controls>
+            <source id="videoSource" src="" type="video/mp4">
+            Tu navegador no soporta video.
+        </video>
+
+        <div class="lista">
+            <button onclick="cargarVideo('video1.mp4')">Documentar</button>
+            <button onclick="cargarVideo('video2.mp4')">Medir</button>
+            <button onclick="cargarVideo('video3.mp4')">Delegación</button>
+            <button onclick="cargarVideo('video4.mp4')">Organización</button>
+            <button onclick="cargarVideo('video5.mp4')">Afrontar</button>
+            <button onclick="cargarVideo('video6.mp4')">Valorar</button>
+            <button onclick="cargarVideo('video7.mp4')">Equidad</button>
+            <button onclick="cargarVideo('video8.mp4')">Jefe-Lider</button>
+            <button onclick="cargarVideo('video9.mp4')">SerLider</button>
+        </div>    
+        <h1 style="color: hwb(162 37% 42%);"> Quintana Roo</h1>
+    </div>
+
+    <!-- Sección Descripción -->
+    <div class="descripcion-section">
+        <h2>Descripción</h2>
+        <p id="descripcionTexto">
+            Selecciona un video para ver su descripción.
+        </p>
+    </div>
+
+ </div>
+</div>
+
+<script>
+    const descripciones = {
+        "video1.mp4": "Es importante definir y redactar los procesos para asegurar su correcta aplicación.",
+        "video2.mp4": "Lo que no se mide no se puede mejorar y tampoco nos indica si estamos bien.",
+        "video3.mp4": "La obsesión por controlar no permite aprovechar el talento de los demás; delegar incorrectamente lleva al fracaso.",
+        "video4.mp4": "Quien constantemente debe resolver urgencias de su área puede tener problemas de organización y prevención.",
+        "video5.mp4": "Tolerar a trabajadores irresponsables desmotiva al resto del equipo y baja la productividad",
+        "video6.mp4": "No reconocer debidamente las aportaciones disminuye la motivación y limita el crecimiento del equipo.",
+        "video7.mp4": "Descargar tareas al más lento y sobrecargar al más eficiente, fomenta desigualdad y desmotivación.",
+        "video8.mp4": "La autoridad no es autoritarismo; el jefe debe transitar a ser líder para convertir su grupo a un Equipo de alto rendimiento",
+        "video9.mp4": "El buen lider brinda las herramientas necesarias, gestiona los requerimientos, respalda las acciones, se compromete con los problemas de su equipo, asume parte de la responsabiliza de los fracasos del equipo. "
+    };
+
+    function cargarVideo(nombre) {
+        const video = document.getElementById("videoPlayer");
+        const source = document.getElementById("videoSource");
+        const descripcion = document.getElementById("descripcionTexto");
+
+        source.src = nombre;
+        video.load();
+        video.play();
+
+        descripcion.textContent = descripciones[nombre] || "Descripción no disponible.";
+    }
+</script>
+
+ <!-- Bootstrap 5 JS Bundle (Includes Popper.js) -->
+    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
